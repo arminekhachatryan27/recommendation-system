@@ -1,0 +1,19 @@
+version: '3.8'
+
+services:
+  redis:
+    image: redis:latest
+    ports:
+      - "6379:6379"
+  
+  generator-service:
+    build:
+      context: ./generator
+    ports:
+      - "5000:5000"
+  
+  invoker-service:
+    build:
+      context: ./invoker
+    ports:
+      - "5001:5000"  # Changed host port to 5001
